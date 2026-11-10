@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Sook - Your Free Media System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/api-docs/koalasook.svg">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <a href="#" class="brand-link" id="brand-home">
+                <svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 72" fill="none">
+                    <defs>
+                        <linearGradient id="nav-koala-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00d2ff" />
+                            <stop offset="100%" stop-color="#0072ff" />
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(8, 6)">
+                        <circle cx="14" cy="18" r="14" fill="url(#nav-koala-grad)" />
+                        <circle cx="14" cy="18" r="7.5" fill="#18181b" />
+                        <circle cx="48" cy="18" r="14" fill="url(#nav-koala-grad)" />
+                        <circle cx="48" cy="18" r="7.5" fill="#18181b" />
+                        <circle cx="31" cy="34" r="23" fill="#18181b" stroke="url(#nav-koala-grad)" stroke-width="3" />
+                        <circle cx="22" cy="31" r="3" fill="#ffffff" />
+                        <circle cx="40" cy="31" r="3" fill="#ffffff" />
+                        <ellipse cx="31" cy="39" rx="6.5" ry="9.5" fill="url(#nav-koala-grad)" />
+                    </g>
+                    <text x="82" y="47" font-family="system-ui, -apple-system, sans-serif" font-size="33" font-weight="800" fill="#ffffff">Koala<tspan fill="#00d2ff">Sook</tspan></text>
+                </svg>
+            </a>
+            <nav class="nav-links">
+                <button class="nav-btn active" data-filter="all">Home</button>
+                <button class="nav-btn" data-filter="Animation">Animation</button>
+                <button class="nav-btn" data-filter="Sci-Fi">Sci-Fi</button>
+                <button class="nav-btn" data-filter="Action">Action</button>
+                <button class="nav-btn" data-filter="Adventure">Adventure</button>
+            </nav>
+        </div>
+
+        <div class="nav-right">
+            <!-- Search Bar -->
+            <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="movie-search" placeholder="Search movies, genres...">
+            </div>
+
+            <!-- Server Status Pill -->
+            <div class="server-pill" id="server-status-pill" title="Click for server details">
+                <span class="status-dot"></span>
+                <span class="status-text" id="server-status-text">Server: Online</span>
+            </div>
+
+            <!-- API Docs Link -->
+            <a href="/api-docs/swagger" target="_blank" class="icon-btn" title="Open API Documentation (Swagger)">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <span>API</span>
+            </a>
+
+            <!-- User Avatar -->
+            <div class="user-avatar" title="Koala Sook Admin">
+                <span>KS</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+        <!-- Hero Spotlight Section -->
+        <section class="hero-section" id="hero-banner">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-badges">
+                    <span class="badge badge-primary">FEATURED SPOTLIGHT</span>
+                    <span class="badge badge-accent">4K UHD</span>
+                    <span class="badge">5.1 SURROUND</span>
+                    <span class="badge" id="hero-rating">IMDb 8.4</span>
+                </div>
+                <h1 class="hero-title" id="hero-title">Sintel</h1>
+                <p class="hero-overview" id="hero-overview">
+                    A lonely young woman named Sintel searches for a baby dragon she befriended and nursed back to health after it is snatched away by a ferocious beast.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" id="hero-play-btn">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span>Play Movie</span>
+                    </button>
+                    <button class="btn btn-secondary" id="hero-info-btn">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <span>More Details</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Filter Bar -->
+        <section class="filter-section">
+            <div class="filter-header">
+                <h2>Browse Library</h2>
+                <span class="movie-count" id="movie-count">Showing 7 movies</span>
+            </div>
+            <div class="genre-pills">
+                <button class="pill-btn active" data-genre="all">All Genres</button>
+                <button class="pill-btn" data-genre="Animation">Animation</button>
+                <button class="pill-btn" data-genre="Sci-Fi">Sci-Fi</button>
+                <button class="pill-btn" data-genre="Action">Action</button>
+                <button class="pill-btn" data-genre="Adventure">Adventure</button>
+                <button class="pill-btn" data-genre="Drama">Drama</button>
+                <button class="pill-btn" data-genre="Documentary">Documentary</button>
+            </div>
+        </section>
+
+        <!-- Movies Grid -->
+        <section class="movies-grid-section">
+            <div class="movies-grid" id="movies-grid">
+                <!-- Dynamically populated by app.js -->
+            </div>
+        </section>
+
+        <!-- Server Diagnostic Banner -->
+        <section class="server-banner">
+            <div class="banner-card">
+                <div class="banner-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#00d2ff" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                </div>
+                <div class="banner-info">
+                    <h3 id="diag-server-name">Koala Sook Server</h3>
+                    <p id="diag-server-desc">Backend API Engine active on port 8096 with SQLite & FFmpeg acceleration.</p>
+                </div>
+                <div class="banner-actions">
+                    <a href="/api-docs/swagger" target="_blank" class="btn btn-outline">Explore REST API</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Video Player Modal -->
+    <div class="modal video-modal" id="video-modal">
+        <div class="video-modal-container">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <span class="modal-badge">NOW STREAMING</span>
+                    <h3 id="player-movie-title">Movie Title</h3>
+                </div>
+                <button class="modal-close" id="close-player-btn" title="Close Player">✕</button>
+            </div>
+            <div class="video-wrapper">
+                <video id="main-video-player" controls preload="metadata">
+                    <source src="" type="video/mp4">
+                    Your browser does not support HTML5 video streaming.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Movie Details Modal -->
+    <div class="modal details-modal" id="details-modal">
+        <div class="details-modal-container">
+            <button class="modal-close details-close" id="close-details-btn">✕</button>
+            <div class="details-backdrop" id="modal-backdrop">
+                <div class="backdrop-gradient"></div>
+            </div>
+            <div class="details-body">
+                <div class="details-poster-wrap">
+                    <img id="modal-poster" src="" alt="Poster" class="details-poster">
+                </div>
+                <div class="details-info">
+                    <h2 id="modal-title">Movie Title</h2>
+                    <div class="modal-meta">
+                        <span class="meta-tag" id="modal-year">2024</span>
+                        <span class="meta-tag" id="modal-duration">15m</span>
+                        <span class="meta-rating" id="modal-rating">★ 8.4</span>
+                        <span class="meta-quality">1080p HD</span>
+                    </div>
+                    <div class="modal-genres" id="modal-genres">
+                        <!-- Populated by JS -->
+                    </div>
+                    <p class="modal-overview" id="modal-overview">Movie overview text...</p>
+                    <div class="modal-cast">
+                        <strong>Studio / License:</strong> <span id="modal-studio">Open Media Source (Creative Commons)</span>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" id="modal-stream-btn">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            <span>Stream Now</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Server Info Modal -->
+    <div class="modal" id="server-modal">
+        <div class="server-modal-container">
+            <div class="modal-header">
+                <h3>Koala Sook Server Information</h3>
+                <button class="modal-close" id="close-server-modal">✕</button>
+            </div>
+            <div class="server-modal-content" id="server-details-body">
+                <div class="info-row">
+                    <span class="info-label">Product Name:</span>
+                    <span class="info-val" id="info-product-name">Koala Sook Server</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Server Version:</span>
+                    <span class="info-val" id="info-version">12.1.0</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Local Host:</span>
+                    <span class="info-val" id="info-address">http://127.0.0.1:8096</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Server ID:</span>
+                    <span class="info-val mono" id="info-id">Loading...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Database Provider:</span>
+                    <span class="info-val">SQLite (KoalaSook.Database)</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Encoder Engine:</span>
+                    <span class="info-val">FFmpeg (Hardware Accelerated)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+
