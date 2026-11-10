@@ -12,10 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="AsyncKeyedLock" />
-    <PackageReference Include="KoalaSook.XmlTv" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KoalaSook.XmlTv\KoalaSook.XmlTv.csproj" />
     <ProjectReference Include="..\..\MediaBrowser.Model\MediaBrowser.Model.csproj" />
     <ProjectReference Include="..\..\MediaBrowser.Controller\MediaBrowser.Controller.csproj" />
     <ProjectReference Include="..\..\MediaBrowser.Common\MediaBrowser.Common.csproj" />
