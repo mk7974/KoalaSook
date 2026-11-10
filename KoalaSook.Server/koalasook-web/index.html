@@ -33,22 +33,42 @@
                 </svg>
             </a>
             <nav class="nav-links">
-                <button class="nav-btn active" data-filter="all">Home</button>
-                <button class="nav-btn" data-filter="Animation">Animation</button>
-                <button class="nav-btn" data-filter="Sci-Fi">Sci-Fi</button>
-                <button class="nav-btn" data-filter="Action">Action</button>
-                <button class="nav-btn" data-filter="Adventure">Adventure</button>
+                <button class="nav-btn active" data-page="home">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Home
+                </button>
+                <button class="nav-btn" data-page="library">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    Library
+                    <span class="nav-badge-pill" id="nav-library-count">3</span>
+                </button>
+                <button class="nav-btn" data-page="discover">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                    Discover
+                </button>
             </nav>
         </div>
 
         <div class="nav-right">
+            <!-- Watch Party Mode Nav Button -->
+            <button class="btn btn-party" id="nav-party-btn" title="Open Watch Party Mode">
+                <span class="party-pulse"></span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Watch Party</span>
+            </button>
+
             <!-- Search Bar -->
             <div class="search-box">
                 <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" id="movie-search" placeholder="Search movies, genres...">
+                <input type="text" id="movie-search" placeholder="Search movies, genres, PG-12...">
             </div>
 
             <!-- Server Status Pill -->
@@ -67,7 +87,7 @@
             </a>
 
             <!-- User Avatar -->
-            <div class="user-avatar" title="Koala Sook Admin">
+            <div class="user-avatar" title="Koala Sook Admin (Host)">
                 <span>KS</span>
             </div>
         </div>
@@ -75,64 +95,181 @@
 
     <!-- Main Content Area -->
     <main class="main-container">
-        <!-- Hero Spotlight Section -->
-        <section class="hero-section" id="hero-banner">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-badges">
-                    <span class="badge badge-primary">FEATURED SPOTLIGHT</span>
-                    <span class="badge badge-accent">4K UHD</span>
-                    <span class="badge">5.1 SURROUND</span>
-                    <span class="badge" id="hero-rating">IMDb 8.4</span>
+
+        <!-- ================= PAGE: HOME ================= -->
+        <div class="page-view active" id="view-home">
+            <!-- Hero Spotlight Section -->
+            <section class="hero-section" id="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-badges">
+                        <span class="badge badge-primary">FEATURED SPOTLIGHT</span>
+                        <span class="badge badge-accent">4K UHD</span>
+                        <span class="badge badge-pg">PG-12</span>
+                        <span class="badge">5.1 SURROUND</span>
+                        <span class="badge" id="hero-rating">IMDb 8.4</span>
+                    </div>
+                    <h1 class="hero-title" id="hero-title">Sintel</h1>
+                    <p class="hero-overview" id="hero-overview">
+                        A lonely young woman named Sintel searches for a baby dragon she befriended and nursed back to health after it is snatched away by a ferocious beast.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" id="hero-play-btn">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            <span>Play Movie</span>
+                        </button>
+                        <button class="btn btn-party" id="hero-party-btn">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span>Watch Party</span>
+                        </button>
+                        <button class="btn btn-secondary" id="hero-info-btn">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                            <span>More Details</span>
+                        </button>
+                    </div>
                 </div>
-                <h1 class="hero-title" id="hero-title">Sintel</h1>
-                <p class="hero-overview" id="hero-overview">
-                    A lonely young woman named Sintel searches for a baby dragon she befriended and nursed back to health after it is snatched away by a ferocious beast.
-                </p>
-                <div class="hero-actions">
-                    <button class="btn btn-primary" id="hero-play-btn">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </section>
+
+            <!-- Library Filter Bar -->
+            <section class="filter-section">
+                <div class="filter-header">
+                    <div class="filter-header-left">
+                        <h2>Browse Catalog</h2>
+                        <span class="pg-badge-tag">Family Safe (PG-12)</span>
+                    </div>
+                    <span class="movie-count" id="movie-count">Showing movies</span>
+                </div>
+                <div class="genre-pills">
+                    <button class="pill-btn active" data-genre="all">All Genres</button>
+                    <button class="pill-btn" data-genre="Animation">Animation</button>
+                    <button class="pill-btn" data-genre="Sci-Fi">Sci-Fi</button>
+                    <button class="pill-btn" data-genre="Action">Action</button>
+                    <button class="pill-btn" data-genre="Adventure">Adventure</button>
+                    <button class="pill-btn" data-genre="Drama">Drama</button>
+                    <button class="pill-btn" data-genre="Comedy">Comedy</button>
+                    <button class="pill-btn" data-genre="Documentary">Documentary</button>
+                </div>
+            </section>
+
+            <!-- Movies Grid -->
+            <section class="movies-grid-section">
+                <div class="movies-grid" id="movies-grid">
+                    <!-- Dynamically populated by app.js -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE: LIBRARY ================= -->
+        <div class="page-view" id="view-library">
+            <section class="library-header-section">
+                <div class="library-title-area">
+                    <div class="library-icon-badge">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                         </svg>
-                        <span>Play Movie</span>
+                    </div>
+                    <div>
+                        <h1>My Media Library</h1>
+                        <p class="library-subtitle">Manage your saved watchlist, continue watching in-progress titles, and favorite PG-12 movies.</p>
+                    </div>
+                </div>
+
+                <!-- Library Tabs -->
+                <div class="library-tabs">
+                    <button class="lib-tab active" data-tab="continue">
+                        <span>Continue Watching</span>
+                        <span class="tab-count" id="count-continue">3</span>
                     </button>
-                    <button class="btn btn-secondary" id="hero-info-btn">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="16" x2="12" y2="12"></line>
-                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                        </svg>
-                        <span>More Details</span>
+                    <button class="lib-tab" data-tab="watchlist">
+                        <span>My Watchlist</span>
+                        <span class="tab-count" id="count-watchlist">0</span>
+                    </button>
+                    <button class="lib-tab" data-tab="favorites">
+                        <span>Favorites ❤️</span>
+                        <span class="tab-count" id="count-favorites">0</span>
+                    </button>
+                    <button class="lib-tab" data-tab="all-family">
+                        <span>PG-12 Family Safe</span>
+                        <span class="tab-count" id="count-family">All</span>
                     </button>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Library Filter Bar -->
-        <section class="filter-section">
-            <div class="filter-header">
-                <h2>Browse Library</h2>
-                <span class="movie-count" id="movie-count">Showing 7 movies</span>
+            <!-- PG-12 Certification Banner -->
+            <div class="family-safe-notice">
+                <div class="notice-icon">🛡️</div>
+                <div class="notice-text">
+                    <strong>PG-12 Family Safe Media Guarantee:</strong>
+                    <span>All titles in this library are curated with age-appropriate themes, mild fantasy action, and zero mature ratings. Perfect for family watch parties!</span>
+                </div>
             </div>
-            <div class="genre-pills">
-                <button class="pill-btn active" data-genre="all">All Genres</button>
-                <button class="pill-btn" data-genre="Animation">Animation</button>
-                <button class="pill-btn" data-genre="Sci-Fi">Sci-Fi</button>
-                <button class="pill-btn" data-genre="Action">Action</button>
-                <button class="pill-btn" data-genre="Adventure">Adventure</button>
-                <button class="pill-btn" data-genre="Drama">Drama</button>
-                <button class="pill-btn" data-genre="Documentary">Documentary</button>
-            </div>
-        </section>
 
-        <!-- Movies Grid -->
-        <section class="movies-grid-section">
-            <div class="movies-grid" id="movies-grid">
-                <!-- Dynamically populated by app.js -->
-            </div>
-        </section>
+            <!-- Library Content Section -->
+            <section class="library-grid-section">
+                <div class="movies-grid" id="library-grid">
+                    <!-- Populated dynamically by app.js based on tab -->
+                </div>
+            </section>
+        </div>
 
-        <!-- Server Diagnostic Banner -->
+        <!-- ================= PAGE: DISCOVER ================= -->
+        <div class="page-view" id="view-discover">
+            <!-- Discover Spotlight Banner -->
+            <section class="discover-hero">
+                <div class="discover-hero-content">
+                    <span class="badge badge-accent">DISCOVER & CURATE</span>
+                    <h2>Explore Hand-Picked PG-12 Gems</h2>
+                    <p>Uncover creative Blender Studio shorts, indie sci-fi adventures, and heartwarming family animated stories.</p>
+                    
+                    <!-- Mood & Vibe Chips -->
+                    <div class="mood-chips">
+                        <span class="mood-title">Browse by Vibe:</span>
+                        <button class="mood-pill active" data-mood="all">🌟 All Vibes</button>
+                        <button class="mood-pill" data-mood="feel-good">😄 Feel Good</button>
+                        <button class="mood-pill" data-mood="sci-fi">🚀 Sci-Fi Wonders</button>
+                        <button class="mood-pill" data-mood="nature">🏕️ Nature & Trails</button>
+                        <button class="mood-pill" data-mood="creative">🎨 3D Animation</button>
+                        <button class="mood-pill" data-mood="family">🍿 Family Night</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trending Top 5 Leaderboard -->
+            <section class="trending-section">
+                <div class="section-heading">
+                    <h3>🔥 Trending This Week on Koala Sook</h3>
+                    <span class="heading-badge">Ranked by Community Watch Time</span>
+                </div>
+                <div class="trending-rank-grid" id="trending-rank-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Curated Discovery Grid -->
+            <section class="discover-catalog-section">
+                <div class="section-heading">
+                    <h3 id="discover-heading">Curated PG-12 Recommendations</h3>
+                    <span class="heading-desc">Hand-picked selections suitable for ages 12 and under accompanied by family</span>
+                </div>
+                <div class="movies-grid" id="discover-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Server Diagnostic Banner (Global Bottom) -->
         <section class="server-banner">
             <div class="banner-card">
                 <div class="banner-icon">
@@ -148,32 +285,312 @@
                     <p id="diag-server-desc">Backend API Engine active on port 8096 with SQLite & FFmpeg acceleration.</p>
                 </div>
                 <div class="banner-actions">
+                    <button class="btn btn-outline" id="quick-party-btn">🎉 Host Watch Party</button>
                     <a href="/api-docs/swagger" target="_blank" class="btn btn-outline">Explore REST API</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Video Player Modal -->
+    <!-- ================= VIDEO PLAYER MODAL WITH CUSTOM CONTROLS ================= -->
     <div class="modal video-modal" id="video-modal">
-        <div class="video-modal-container">
-            <div class="modal-header">
-                <div class="modal-title-wrap">
+        <div class="video-modal-container" id="video-player-container">
+            <!-- Player Top Bar -->
+            <div class="player-top-bar">
+                <div class="player-title-info">
                     <span class="modal-badge">NOW STREAMING</span>
+                    <span class="badge badge-pg">PG-12</span>
                     <h3 id="player-movie-title">Movie Title</h3>
                 </div>
-                <button class="modal-close" id="close-player-btn" title="Close Player">✕</button>
+                <div class="player-top-actions">
+                    <button class="player-top-btn party-toggle-btn" id="player-party-toggle" title="Toggle Watch Party Side Panel">
+                        <span>🎉</span>
+                        <span class="party-status-txt">Party: Live (4)</span>
+                    </button>
+                    <button class="modal-close" id="close-player-btn" title="Close Player">✕</button>
+                </div>
             </div>
-            <div class="video-wrapper">
-                <video id="main-video-player" controls preload="metadata">
-                    <source src="" type="video/mp4">
-                    Your browser does not support HTML5 video streaming.
-                </video>
+
+            <!-- Video Player Area -->
+            <div class="player-layout-wrap">
+                <div class="video-wrapper" id="video-wrapper-area">
+                    <video id="main-video-player" preload="metadata" playsinline>
+                        <source src="" type="video/mp4">
+                        Your browser does not support HTML5 video streaming.
+                    </video>
+
+                    <!-- Dummy Subtitles Overlay -->
+                    <div class="subtitles-overlay hidden" id="subtitles-overlay">
+                        <span class="sub-text" id="subtitles-text">[English PG-12 Subtitles Active]</span>
+                    </div>
+
+                    <!-- Floating Emoji Container for Watch Party -->
+                    <div class="floating-emojis-container" id="floating-emojis"></div>
+
+                    <!-- Center Play/Pause Splash Icon -->
+                    <div class="center-play-splash" id="center-play-splash">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </div>
+
+                    <!-- Custom Media Controls Bar -->
+                    <div class="custom-media-controls" id="custom-media-controls">
+                        <!-- Progress / Scrubber Bar -->
+                        <div class="scrubber-container" id="scrubber-container">
+                            <div class="progress-bar-bg">
+                                <div class="progress-buffer" id="progress-buffer"></div>
+                                <div class="progress-current" id="progress-current"></div>
+                            </div>
+                            <input type="range" class="scrubber-slider" id="scrubber-slider" min="0" max="100" value="0" step="0.1">
+                        </div>
+
+                        <!-- Controls Buttons Row -->
+                        <div class="controls-row">
+                            <!-- Left Controls -->
+                            <div class="controls-left">
+                                <!-- Play/Pause Button -->
+                                <button class="ctrl-btn" id="ctrl-play-pause" title="Play/Pause (Space)">
+                                    <svg id="ctrl-icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                    <svg id="ctrl-icon-pause" class="hidden" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                                        <rect x="6" y="4" width="4" height="16"></rect>
+                                        <rect x="14" y="4" width="4" height="16"></rect>
+                                    </svg>
+                                </button>
+
+                                <!-- Skip Backward 10s -->
+                                <button class="ctrl-btn" id="ctrl-skip-back" title="Rewind 10s">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/>
+                                    </svg>
+                                    <span class="ctrl-label-tiny">-10s</span>
+                                </button>
+
+                                <!-- Skip Forward 10s -->
+                                <button class="ctrl-btn" id="ctrl-skip-fwd" title="Fast Forward 10s">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
+                                    </svg>
+                                    <span class="ctrl-label-tiny">+10s</span>
+                                </button>
+
+                                <!-- Volume Control -->
+                                <div class="volume-control-wrap">
+                                    <button class="ctrl-btn" id="ctrl-mute-btn" title="Mute/Unmute (M)">
+                                        <svg id="icon-vol-high" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                        </svg>
+                                        <svg id="icon-vol-mute" class="hidden" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        </svg>
+                                    </button>
+                                    <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05" value="1">
+                                </div>
+
+                                <!-- Time Display -->
+                                <div class="time-display">
+                                    <span id="time-current">00:00</span>
+                                    <span>/</span>
+                                    <span id="time-duration">00:00</span>
+                                </div>
+                            </div>
+
+                            <!-- Right Controls -->
+                            <div class="controls-right">
+                                <!-- Speed Selector -->
+                                <button class="ctrl-pill-btn" id="ctrl-speed-btn" title="Playback Speed">1.0x</button>
+
+                                <!-- Subtitle / CC Toggle -->
+                                <button class="ctrl-pill-btn" id="ctrl-cc-btn" title="Subtitles / Captions (PG-12 Safe)">CC</button>
+
+                                <!-- Quality Selector Badge -->
+                                <button class="ctrl-pill-btn badge-accent-pill" id="ctrl-quality-btn" title="Stream Resolution">1080p HD</button>
+
+                                <!-- Picture-in-Picture -->
+                                <button class="ctrl-btn" id="ctrl-pip-btn" title="Picture in Picture">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                        <rect x="12" y="9" width="8" height="6" rx="1"></rect>
+                                    </svg>
+                                </button>
+
+                                <!-- Fullscreen -->
+                                <button class="ctrl-btn" id="ctrl-fullscreen-btn" title="Toggle Fullscreen (F)">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Docked Watch Party Drawer (side panel) -->
+                <div class="party-side-drawer" id="player-party-drawer">
+                    <div class="party-drawer-header">
+                        <div class="party-status-indicator">
+                            <span class="party-live-dot"></span>
+                            <div>
+                                <h4>Party Room #KS-7892</h4>
+                                <span class="party-sync-info">🟢 Synced with Host</span>
+                            </div>
+                        </div>
+                        <button class="drawer-close" id="close-party-drawer">✕</button>
+                    </div>
+
+                    <!-- Room Share Quick Bar -->
+                    <div class="room-code-bar">
+                        <span class="room-code-txt">CODE: <strong>KS-7892</strong></span>
+                        <button class="btn btn-copy-mini" id="party-copy-btn">📋 Copy Link</button>
+                    </div>
+
+                    <!-- Active Viewers Chips -->
+                    <div class="viewers-shelf">
+                        <span class="shelf-label">Watching Now (4):</span>
+                        <div class="viewer-tags">
+                            <span class="viewer-tag host" title="Room Host">🐨 You</span>
+                            <span class="viewer-tag" title="Synced at 04:15">🦊 Emma</span>
+                            <span class="viewer-tag" title="Synced at 04:15">🐼 Liam</span>
+                            <span class="viewer-tag" title="Synced at 04:15">🐯 Zoe</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Reaction Bar -->
+                    <div class="reaction-triggers">
+                        <span class="reaction-title">Send Reaction:</span>
+                        <div class="reaction-btns">
+                            <button class="react-btn" data-emoji="🍿" title="Popcorn">🍿</button>
+                            <button class="react-btn" data-emoji="❤️" title="Love">❤️</button>
+                            <button class="react-btn" data-emoji="🎉" title="Party">🎉</button>
+                            <button class="react-btn" data-emoji="👏" title="Applause">👏</button>
+                            <button class="react-btn" data-emoji="😲" title="Wow">😲</button>
+                            <button class="react-btn" data-emoji="🐨" title="Koala">🐨</button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Message Feed -->
+                    <div class="party-chat-feed" id="party-chat-feed">
+                        <div class="chat-msg system">
+                            <span>🛡️ Family Safe Watch Party Room initialized (PG-12).</span>
+                        </div>
+                        <div class="chat-msg">
+                            <strong class="user user-emma">Emma:</strong>
+                            <span>Hey everyone! Grabbed the popcorn 🍿 Ready to watch!</span>
+                        </div>
+                        <div class="chat-msg">
+                            <strong class="user user-liam">Liam:</strong>
+                            <span>Audio quality sounds awesome on 5.1 surround! 🎧</span>
+                        </div>
+                        <div class="chat-msg">
+                            <strong class="user user-zoe">Zoe:</strong>
+                            <span>The animation details in this short film are incredible 🐉✨</span>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <form class="party-chat-input-row" id="party-chat-form">
+                        <input type="text" id="party-chat-text" placeholder="Type a family-friendly message..." autocomplete="off">
+                        <button type="submit" class="btn-chat-send" title="Send message">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Movie Details Modal -->
+    <!-- ================= STANDALONE WATCH PARTY MODAL ================= -->
+    <div class="modal party-modal" id="standalone-party-modal">
+        <div class="standalone-party-container">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <span class="modal-badge">COMMUNITY STREAMING</span>
+                    <h3>🎉 Koala Sook Watch Party</h3>
+                </div>
+                <button class="modal-close" id="close-standalone-party-btn">✕</button>
+            </div>
+            <div class="standalone-party-body">
+                <div class="party-intro-card">
+                    <div class="party-hero-emoji">🍿🎉</div>
+                    <div class="party-intro-info">
+                        <h4>Stream in Perfect Sync with Friends</h4>
+                        <p>Enjoy synchronized play, pause, seek, and instant reactions in a wholesome PG-12 family-friendly environment.</p>
+                    </div>
+                </div>
+
+                <div class="party-config-box">
+                    <div class="config-row">
+                        <span class="config-label">Room Identifier:</span>
+                        <div class="room-badge-group">
+                            <span class="room-badge mono">KOALA-PARTY-7892</span>
+                            <button class="btn btn-outline-sm" id="btn-copy-standalone-link">📋 Copy Invite</button>
+                        </div>
+                    </div>
+                    <div class="config-row">
+                        <span class="config-label">Safety Rating:</span>
+                        <span class="badge badge-pg">PG-12 Family Certified</span>
+                    </div>
+                    <div class="config-row">
+                        <span class="config-label">Select Movie to Stream:</span>
+                        <select id="party-select-movie" class="party-movie-picker">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="party-friends-card">
+                    <h4>Connected Viewers (Ready to sync):</h4>
+                    <div class="friends-list">
+                        <div class="friend-item">
+                            <span class="friend-avatar host">KS</span>
+                            <div class="friend-meta">
+                                <strong>KoalaAdmin (You)</strong>
+                                <span class="friend-sub">Room Host • Ready</span>
+                            </div>
+                        </div>
+                        <div class="friend-item">
+                            <span class="friend-avatar">ES</span>
+                            <div class="friend-meta">
+                                <strong>Emma S.</strong>
+                                <span class="friend-sub">Online • Ready</span>
+                            </div>
+                        </div>
+                        <div class="friend-item">
+                            <span class="friend-avatar">LP</span>
+                            <div class="friend-meta">
+                                <strong>Liam P.</strong>
+                                <span class="friend-sub">Online • Ready</span>
+                            </div>
+                        </div>
+                        <div class="friend-item">
+                            <span class="friend-avatar">ZT</span>
+                            <div class="friend-meta">
+                                <strong>Zoe T.</strong>
+                                <span class="friend-sub">Online • Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="standalone-party-actions">
+                    <button class="btn btn-primary btn-large" id="btn-launch-party-stream">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span>Launch Synced Party Stream</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MOVIE DETAILS MODAL ================= -->
     <div class="modal details-modal" id="details-modal">
         <div class="details-modal-container">
             <button class="modal-close details-close" id="close-details-btn">✕</button>
@@ -189,6 +606,7 @@
                     <div class="modal-meta">
                         <span class="meta-tag" id="modal-year">2024</span>
                         <span class="meta-tag" id="modal-duration">15m</span>
+                        <span class="badge badge-pg" id="modal-pg-badge">PG-12</span>
                         <span class="meta-rating" id="modal-rating">★ 8.4</span>
                         <span class="meta-quality">1080p HD</span>
                     </div>
@@ -206,13 +624,30 @@
                             </svg>
                             <span>Stream Now</span>
                         </button>
+                        <button class="btn btn-party" id="modal-party-btn">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span>Watch Party</span>
+                        </button>
+                        <button class="btn btn-outline" id="modal-watchlist-btn">
+                            <span class="wl-icon">➕</span>
+                            <span class="wl-text">Watchlist</span>
+                        </button>
+                        <button class="btn btn-outline" id="modal-favorite-btn">
+                            <span class="fav-icon">🤍</span>
+                            <span class="fav-text">Favorite</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Server Info Modal -->
+    <!-- ================= SERVER INFO MODAL ================= -->
     <div class="modal" id="server-modal">
         <div class="server-modal-container">
             <div class="modal-header">
@@ -244,11 +679,17 @@
                     <span class="info-label">Encoder Engine:</span>
                     <span class="info-val">FFmpeg (Hardware Accelerated)</span>
                 </div>
+                <div class="info-row">
+                    <span class="info-label">Safety Rating Filter:</span>
+                    <span class="info-val" style="color: #34d399;">Active (PG-12 Wholesome)</span>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
     <script src="js/app.js"></script>
 </body>
 </html>
-
